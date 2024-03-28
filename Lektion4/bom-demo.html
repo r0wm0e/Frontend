@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Browser Object Model</title>
+  </head>
+  <body>
+    <h1>BOM-Demo</h1>
+    <script>
+      let name = prompt("Vad heter du?");
+      alert("Hej " + name);
+
+      let tal1 = prompt("Ange ett tal 1");
+      let tal2 = prompt("Ange ett tal 2");
+      alert("Summa = " + (Number(tal1) + Number(tal2)));
+
+      // annars kan man lägga till + innan +promt
+      let tal3 = +prompt("Ange ett tal 3");
+      let tal4 = +prompt("Ange ett tal 4");
+      alert("Summan = " + (tal3 + tal4));
+
+      // console används för testning mest, för att skriva i consolen i chrome utvecklar tools
+      console.log("Summan = " + (tal3 + tal4));
+      // om jag vill logga hela dokumentet
+      console.log(document);
+    </script>
+  </body>
+</html>

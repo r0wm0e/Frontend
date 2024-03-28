@@ -1,0 +1,31 @@
+body {
+    color: red;
+}
+
+h1{
+    font-size: 60px;
+}
+
+.intro{
+    font-size: 3em;
+    background-color: black;
+    color: red;
+}
+
+a {
+    font-size: 2em;
+  }
+  a:link {
+    color: #000000;
+    text-decoration-style: none;
+  }
+  a:visited {
+    color: #ee82ee;
+  }
+  a:hover {
+    color: #008000;
+    text-decoration: underline;
+  }
+  a:active {
+    color: #9acd32;
+  }
