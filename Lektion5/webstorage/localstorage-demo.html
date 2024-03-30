@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Local Storage-Demo</title>
+  </head>
+  <body>
+    <h1>Local Storage-Demo</h1>
+
+    <script>
+      // Skapa en key-value-pair i localstorage
+      localStorage.setItem("fname", "Olof");
+      localStorage.setItem("lname", "Olofsson");
+      localStorage.setItem("age", "20");
+
+      //Hämta data
+      let name = localStorage.getItem("name");
+      console.log(name);
+
+      //Hämta alla nycklar och värden
+      for (let i = 0; i < localStorage.length; i++) {
+        console.log("Key: " + localStorage.key(i));
+        console.log("Value: " + localStorage.getItem(localStorage.key(i)));
+      }
+
+      // Ta bort data
+
+      localStorage.removeItem("name");
+      name = localStorage.getItem("name");
+      console.log(name);
+
+      console.log(localStorage);
+      console.log("Rensa allt från localStorage");
+
+      // rensa allt
+      localStorage.clear();
+
+      //Spara en array i localstorage
+      const myArray = ["A", "B", "C"];
+
+      localStorage.setItem("myBadArray", myArray); // FEL Skriver bara ut en String
+      let arrayFromLS = localStorage.getItem("myBadArray");
+      console.log("Utan Parse");
+      console.log(arrayFromLS[0]); // A
+      console.log(arrayFromLS[1]); // ,
+      console.log(arrayFromLS[2]); // B
+
+      // Spara en array i localstorage
+      localStorage.setItem("myGoodArray", JSON.stringify(myArray)); // RÄTT skriver ut i arrayformat ["A","B","C"]
+      arrayFromLS = localStorage.getItem("myGoodArray"); // Utan parse [ " A
+
+      // konvertera tillbaka till en array med JSON.parse
+      console.log("Med Parse");
+      arrayFromLS = JSON.parse(localStorage.getItem("myGoodArray")); // Skriver ut på rätt sätt med parse A, B, C
+      console.log(arrayFromLS[0]); // A
+      console.log(arrayFromLS[1]); // B
+      console.log(arrayFromLS[2]); // C
+
+      // Lagra JS-Objekt i LS
+      let myObject = {
+        first: "A",
+        second: "B",
+        third: "C",
+      };
+      //Skriva ut object
+
+      console.log("Utan Parse");
+      localStorage.setItem("myBadObject", myObject); // Fel
+      console.log(localStorage.getItem("myBadObject"));
+
+      console.log("Med Parse");
+      localStorage.setItem("myGoodObject", JSON.stringify(myObject)); // Rätt
+      const obj = JSON.parse(localStorage.getItem("myGoodObject"));
+      console.log(obj);
+
+      console.log("Skriv ut första i Object");
+      console.log(obj.first);
+      console.log("Skriv ut andra i Object");
+      console.log(obj.second);
+      console.log("Skriv ut tredje i Object");
+      console.log(obj.third);
+    </script>
+  </body>
+</html>
