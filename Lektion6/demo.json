@@ -1,0 +1,12 @@
+{
+"id": 1,
+"name": "Olof Olofsson",
+"username": "olofos",
+"email": "www.olofsof@example.com",
+"phone": "0701112223",
+    "company": {
+    "name": "Web Academy AB",
+    "adress": "Engatavägen 17, 184 33 Åkersberga", 
+    "website": "wwww.example.com"
+    }   
+}
