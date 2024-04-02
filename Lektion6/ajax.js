@@ -1,9 +1,11 @@
 let loadBtn = document.getElementById('loadBtn')
 let loadJsonBtn = document.getElementById('loadJSON')
+let loadApiBtn = document.getElementById('loadFromAPI')
 
-// skapa en eventlistener on button
+// skapa eventlistener on buttons
 loadBtn.addEventListener('click', loadText);
 loadJsonBtn.addEventListener('click', loadJSON);
+loadApiBtn.addEventListener('click', loadApi);
 
 function loadText(){
     console.log("Inne i Ajax-function");
@@ -38,3 +40,41 @@ function renderJSON(json){
         <h4>Company: ${json.company.name}</h4>
         `;
 }
+
+function loadApi() {
+    console.log("Inne i loadApi-function");
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', 'https://jsonplaceholder.typicode.com/users');
+    xhr.send();
+    xhr.onload = function() {
+        //console.log(xhr.response);
+        json = JSON.parse(xhr.response)
+        console.log(json);
+        renderApi(json)
+        };
+}
+
+function renderApi(json){
+
+    let output = '<div>';    
+    json.forEach(user => {
+        output += user.name + '<br>';
+    });
+    output += '</div>';
+
+
+    document.getElementById('output').innerHTML = output;
+}
+
+// Ajax via JQuery
+    $(document).ready(function(){
+        // Hämta bara text/HTML
+        console.log("Hello from JQuery");
+        $('#output-jquery').load('demo.html')
+
+        // Hämta JSON
+        $.getJSON('demo.json', function(response){
+            console.log(response);
+            $('#output-jquery-json').html(response.name);
+        })
+    });
